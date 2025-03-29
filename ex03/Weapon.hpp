@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 10:28:00 by trgaspar          #+#    #+#             */
-/*   Updated: 2025/03/18 15:47:13 by trgaspar         ###   ########.fr       */
+/*   Updated: 2025/03/29 22:53:06 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Weapon
 			std::string	_type;
 	public:
 			void		setType(std::string str);
-			std::string	getType(void);
+			const std::string	&getType(void) const;
 			Weapon(std::string name);
 			~Weapon(void);
 };

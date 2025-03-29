@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:51:10 by trgaspar          #+#    #+#             */
-/*   Updated: 2025/03/25 17:43:13 by trgaspar         ###   ########.fr       */
+/*   Updated: 2025/03/29 23:01:47 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int Harl::complain(std::string level)
 			return (i);
 		}
 	}
-	return (-1);
+	sw(4);
+	return (1);
 }
 
 void Harl::sw(int index)
@@ -71,41 +72,26 @@ void Harl::sw(int index)
 		case 0:
 		{
 			std::cout << "[ Debug ]" << std::endl;
-			for (int i = index; i <= 3; i++)
-			{
-				(this->*ptrFunc[i])();
-				std::cout << std::endl;
-			}
-			break;
+			(this->*ptrFunc[0])();
+			std::cout << std::endl;
 		}
 		case 1:
 		{
 			std::cout << "[ Info ]" << std::endl;
-			for (int i = index; i <= 3; i++)
-			{
-				(this->*ptrFunc[i])();
-				std::cout << std::endl;
-			}
-			break;
+			(this->*ptrFunc[1])();
+			std::cout << std::endl;
 		}
 		case 2:
 		{
 			std::cout << "[ Warning ]" << std::endl;
-			for (int i = index; i <= 3; i++)
-			{
-				(this->*ptrFunc[i])();
-				std::cout << std::endl;
-			}
-			break;
+			(this->*ptrFunc[2])();
+			std::cout << std::endl;
 		}
 		case 3:
 		{
 			std::cout << "[ Error ]" << std::endl;
-			for (int i = index; i <= 3; i++)
-			{
-				(this->*ptrFunc[i])();
-				std::cout << std::endl;
-			}
+			(this->*ptrFunc[3])();
+			std::cout << std::endl;
 			break;
 		}
 		default:

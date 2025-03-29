@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:51:10 by trgaspar          #+#    #+#             */
-/*   Updated: 2025/03/21 17:03:46 by trgaspar         ###   ########.fr       */
+/*   Updated: 2025/03/29 22:52:05 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ void Sed::start(void)
 
 	openFd(_filename);
 	fd.open(fdString.c_str(), std::fstream::out);
+	if (!fd)
+	{
+        std::cerr << "Error: fd isn't open !" << std::endl;
+		_fd.close();
+        return ;
+    }
 	while (getline(_fd, line))
 	{
 		while (isLineValid(line) == false)
@@ -78,9 +84,11 @@ bool Sed::isLineValid(std::string &str)
 
 void Sed::replace(std::string &str)
 {
-	int	i = _iLineNoValid + _s2.size();
+    size_t i = str.find(_s1, _iLineNoValid);
 
-	str.insert(_iLineNoValid, _s2);
-	str.erase(i, _s1.size());
-	std::cout << str << std::endl;
+    if (i != std::string::npos)
+    {
+        str.insert(i, _s2);
+        str.erase(i + _s2.size(), _s1.size());
+    }
 }
